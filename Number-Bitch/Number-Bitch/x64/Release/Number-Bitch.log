@@ -1,3 +1,9 @@
-﻿  main.cpp
-MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 main
-D:\Sighhh\Projects\Number_Bitch\Number-Bitch\Number-Bitch\x64\Release\Number-Bitch.exe : fatal error LNK1120: 1 个无法解析的外部命令
+﻿  tray.cpp
+  main.cpp
+  number_bitch.cpp
+  正在生成代码
+  244 of 247 functions (98.8%) were compiled, the rest were copied from previous compilation.
+    13 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  Number-Bitch.vcxproj -> D:\Sighhh\Projects\Number_Bitch\Number-Bitch\Number-Bitch\x64\Release\Number-Bitch.exe
