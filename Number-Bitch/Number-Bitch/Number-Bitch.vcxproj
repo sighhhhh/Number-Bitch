@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -106,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(Outdir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
@@ -121,14 +121,36 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="tray.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="number_bitch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="number_bitch.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="tray.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Resource\icon\Caps-off.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\Caps-on.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Caps-off.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Caps-on.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Lock-off.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Lock-on.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\Capslock_off.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\Capslock_off.png" />
+    <Image Include="..\..\..\..\..\Resource\icon\Capslock_on.ico" />
+    <Image Include="..\..\..\..\..\Resource\icon\Capslock_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Number-Bitch.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

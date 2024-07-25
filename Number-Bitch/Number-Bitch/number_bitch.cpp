@@ -1,17 +1,16 @@
-#include <windows.h>
-#include <iostream>
-#include <unordered_map>
-#include <set>
-
-bool g_capsLockWasOn = false;
-bool g_capsLockIsOn = false;
-bool g_spaceIsOn = false;
-bool g_bitch = false;
-
-int pressed_pre_len = 0;
+#include "number_bitch.h"
+#include "tray.h"
 
 std::set<int> pressed_keys;
 std::unordered_map<int, int> keyMapping;
+
+extern bool g_capsLockWasOn = false;
+extern bool g_capsLockIsOn = false;
+extern bool g_spaceIsOn = false;
+extern bool g_bitch = false;
+extern HWND g_hwnd = NULL;
+
+int pressed_pre_len = 0;
 
 void initKeyMapping()
 {
@@ -63,6 +62,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
         if (g_capsLockIsOn && keyMapping.find(p->vkCode) != keyMapping.end())
         {
             g_bitch = true;
+            PostMessage(g_hwnd, ID_SWITCH_ICON_TRUE, g_bitch, 0);
             /*std::cout << "g_spaceIsOn : " << g_spaceIsOn << std::endl;*/
             // 如果不是空格键且空格键没有激活
             if (!g_spaceIsOn) {
@@ -100,10 +100,11 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
             if (g_bitch)
             {
                 keybd_event(VK_CAPITAL, MapVirtualKey(VK_CAPITAL, MAPVK_VK_TO_VSC), 0, 0);
-                Sleep(8);
+                Sleep(5);
                 keybd_event(VK_CAPITAL, MapVirtualKey(VK_CAPITAL, MAPVK_VK_TO_VSC), KEYEVENTF_KEYUP, 0);
+                g_bitch = false; // 清除标记
+                PostMessage(g_hwnd, ID_SWITCH_ICON_FALSE, g_bitch, 0);
             }
-            g_bitch = false; // 清除标记
         }
         break;
     }
@@ -114,28 +115,3 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
     return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
-int main()
-{
-    // 初始化映射关系
-    initKeyMapping();
-
-    // 创建全局勾子
-    HHOOK hHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, NULL, 0);
-
-    if (!hHook)
-    {
-        std::cerr << "无法安装钩子" << std::endl;
-        return -1;
-    }
-
-    MSG msg;
-    while (GetMessage(&msg, NULL, 0, 0))
-    {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-
-    UnhookWindowsHookEx(hHook);
-
-    return 0;
-}
