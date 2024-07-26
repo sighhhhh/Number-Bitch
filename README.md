@@ -58,6 +58,12 @@
 
 ---
 
+<img src="D:\Sighhh\Resource\icon\CapsLock-Caps-on.png" alt="CapsLock-Caps-on" style="zoom:33%;" /><img src="D:\Sighhh\Resource\icon\CapsLock-Caps-off.png" alt="CapsLock-Caps-off" style="zoom:33%;" />
+
+<img src="D:\Sighhh\Resource\icon\CapsLock-Lock-on.png" alt="CapsLock-Lock-on" style="zoom:33%;" /><img src="D:\Sighhh\Resource\icon\CapsLock-Caps-off.png" alt="CapsLock-Caps-off" style="zoom:33%;" />
+
+---
+
 # Number-Bitch
 
 Number Keys!You are the son of Bitch!
