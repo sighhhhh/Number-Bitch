@@ -1,3 +1,4 @@
+#include <tchar.h>
 #include "number_bitch.h"
 #include "tray.h"
 
@@ -8,6 +9,16 @@ int WINAPI WinMain(
     int       nCmdShow
 )
 {
+    // 创建互斥体
+    HANDLE hMutex = CreateMutex(NULL, TRUE, _T("UniqueMutex"));
+
+    // 检查是否已运行实例
+    if (GetLastError() == ERROR_ALREADY_EXISTS)
+    {
+        MessageBox(NULL, _T("应用程序已经在运行中！"), _T("错误"), MB_OK | MB_ICONEXCLAMATION);
+        return 0;
+    }
+
     // 初始化映射关系
     initKeyMapping();
 
@@ -64,5 +75,7 @@ int WINAPI WinMain(
     UnhookWindowsHookEx(hHook);
     RemoveTrayIcon(hwnd);
 
+    ReleaseMutex(hMutex);
+    CloseHandle(hMutex);
     return 0;
 }

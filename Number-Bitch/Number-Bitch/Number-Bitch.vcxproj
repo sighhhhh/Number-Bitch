@@ -138,16 +138,10 @@
     <ClInclude Include="tray.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\Resource\icon\Caps-off.ico" />
-    <Image Include="..\..\..\..\..\Resource\icon\Caps-on.ico" />
     <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Caps-off.ico" />
     <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Caps-on.ico" />
-    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Lock-off.ico" />
-    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Lock-on.ico" />
     <Image Include="..\..\..\..\..\Resource\icon\Capslock_off.ico" />
-    <Image Include="..\..\..\..\..\Resource\icon\Capslock_off.png" />
     <Image Include="..\..\..\..\..\Resource\icon\Capslock_on.ico" />
-    <Image Include="..\..\..\..\..\Resource\icon\Capslock_on.png" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Number-Bitch.rc" />
