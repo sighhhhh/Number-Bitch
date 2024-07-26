@@ -37,16 +37,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Caps-off.ico">
+    <Image Include="..\..\..\..\Resource\icon\Capslock_off.ico">
       <Filter>资源文件</Filter>
     </Image>
-    <Image Include="..\..\..\..\..\Resource\icon\CapsLock-Caps-on.ico">
+    <Image Include="..\..\..\..\Resource\icon\Capslock_on.ico">
       <Filter>资源文件</Filter>
     </Image>
-    <Image Include="..\..\..\..\..\Resource\icon\Capslock_off.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="..\..\..\..\..\Resource\icon\Capslock_on.ico">
+    <Image Include="..\..\..\..\Resource\icon\CapsLock.ico">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
