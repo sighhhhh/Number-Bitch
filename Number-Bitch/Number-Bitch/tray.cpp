@@ -82,6 +82,7 @@ void ShowMenu()
 	HMENU hMenu = CreatePopupMenu();
 	AppendMenu(hMenu, MF_STRING, ID_EXIT, TEXT("Bye!~"));
 
+
 	POINT pt;
 	GetCursorPos(&pt);
 
@@ -94,3 +95,4 @@ void ShowMenu()
 	// Ïú»Ù²Ëµ¥
 	DestroyMenu(hMenu);
 }
+

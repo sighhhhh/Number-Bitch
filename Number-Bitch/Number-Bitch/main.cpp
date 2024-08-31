@@ -1,6 +1,7 @@
 #include <tchar.h>
 #include "number_bitch.h"
 #include "tray.h"
+#include "Startup.h"
 
 int WINAPI WinMain(
     HINSTANCE hInstance,
@@ -9,6 +10,17 @@ int WINAPI WinMain(
     int       nCmdShow
 )
 {
+    // 是否开机自启
+    if (IsFirstRun())
+    {
+        int result = MessageBox(NULL, _T("是否将程序添加到开机自启动？"), _T("提示"), MB_YESNO | MB_ICONQUESTION);
+        if (result == IDYES)
+        {
+            AddToStartup();
+        }
+        SetFirstRunComplete();
+    }
+
     // 创建互斥体
     HANDLE hMutex = CreateMutex(NULL, TRUE, _T("UniqueMutex"));
 
@@ -79,3 +91,4 @@ int WINAPI WinMain(
     CloseHandle(hMutex);
     return 0;
 }
+
