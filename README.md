@@ -58,9 +58,13 @@
 
 ---
 
-<img src="D:\Sighhh\Resource\icon\CapsLock-Caps-on.png" alt="CapsLock-Caps-on" style="zoom: 33%;" />							<img src="D:\Sighhh\Resource\icon\CapsLock-Lock-off.png" alt="CapsLock-Lock-off" style="zoom: 33%;" />
+<img src="D:\Sighhh\Resource\icon\CapsLock-Caps-on.png" alt="CapsLock-Caps-on" style="zoom: 33%;" />
+<img src="D:\Sighhh\Resource\icon\CapsLock-Lock-off.png" alt="CapsLock-Lock-off" style="zoom: 33%;" />
 
-<img src="https://raw.githubusercontent.com/sighhhhh/PicGo/main/CapsLock-Lock-on.png" alt="CapsLock-Lock-on" style="zoom: 33%;" />							<img src="https://raw.githubusercontent.com/sighhhhh/PicGo/main/CapsLock-Caps-off.png" alt="CapsLock-Caps-off" style="zoom: 33%;" />
+
+
+<img src="https://raw.githubusercontent.com/sighhhhh/PicGo/main/CapsLock-Lock-on.png" alt="CapsLock-Lock-on" style="zoom: 33%;" />
+<img src="https://raw.githubusercontent.com/sighhhhh/PicGo/main/CapsLock-Caps-off.png" alt="CapsLock-Caps-off" style="zoom: 33%;" />
 
 ---
 
