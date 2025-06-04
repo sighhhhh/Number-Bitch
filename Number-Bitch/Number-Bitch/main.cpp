@@ -1,13 +1,13 @@
 #include <tchar.h>
 #include "number_bitch.h"
 #include "tray.h"
-#include "Startup.h"
+#include "startup.h"
 
 int WINAPI WinMain(
-    HINSTANCE hInstance,
-    HINSTANCE hPrevInstance,
-    LPSTR     lpCmdLine,
-    int       nCmdShow
+    _In_ HINSTANCE hInstance,
+    _In_opt_ HINSTANCE hPrevInstance,
+    _In_ LPSTR     lpCmdLine,
+    _In_ int       nCmdShow
 )
 {
     // 是否开机自启
@@ -87,8 +87,11 @@ int WINAPI WinMain(
     UnhookWindowsHookEx(hHook);
     RemoveTrayIcon(hwnd);
 
-    ReleaseMutex(hMutex);
-    CloseHandle(hMutex);
+    if (hMutex != NULL)
+    {
+        ReleaseMutex(hMutex);
+        CloseHandle(hMutex);
+    }
     return 0;
 }
 

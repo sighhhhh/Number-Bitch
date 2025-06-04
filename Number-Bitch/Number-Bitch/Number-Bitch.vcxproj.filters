@@ -24,7 +24,7 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Startup.cpp">
+    <ClCompile Include="startup.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,7 +38,7 @@
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Startup.h">
+    <ClInclude Include="startup.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

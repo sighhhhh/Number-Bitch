@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Startup.cpp" />
+    <ClCompile Include="startup.cpp" />
     <ClCompile Include="tray.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="number_bitch.cpp" />
@@ -136,7 +136,7 @@
   <ItemGroup>
     <ClInclude Include="number_bitch.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Startup.h" />
+    <ClInclude Include="startup.h" />
     <ClInclude Include="tray.h" />
   </ItemGroup>
   <ItemGroup>

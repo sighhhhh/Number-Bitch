@@ -1,7 +1,9 @@
 #include "tray.h"
 #include "number_bitch.h"
+#include "startup.h"
 
 NOTIFYICONDATA IconData;
+static bool isAutoStartup;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -12,6 +14,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		CreateTrayIcon(hwnd);
 		// 不显示窗口
 		ShowWindow(hwnd, SW_HIDE);
+		// 初始化参数
+		isAutoStartup = IsStartupEnabled();
 		break;
 	case WM_DESTROY:
 		// 移除托盘图标
@@ -22,7 +26,36 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		// 处理菜单指令
 		if (LOWORD(wParam) == ID_EXIT)
 		{
+			if (isAutoStartup == TRUE)
+			{
+				AddToStartup();
+				//std::cout << "IsAutoStartup:" << isAutoStartup;
+				//std::cout << "IsStartupEnabled:" << IsStartupEnabled;
+			}
+			else
+			{
+				RemoveFromStartup();
+				//std::cout << "IsAutoStartup:" << isAutoStartup;
+				//std::cout << "IsStartupEnabled:" << IsStartupEnabled;
+			}
 			DestroyWindow(hwnd);
+		}
+		if (LOWORD(wParam) == ID_STARTUP)
+		{
+			if (isAutoStartup == TRUE)
+			{
+				isAutoStartup = FALSE;
+				//RemoveFromStartup();
+				std::cout << "IsAutoStartup:" << isAutoStartup;
+				//std::cout << "IsStartupEnabled:" << IsStartupEnabled;
+			}
+			else
+			{
+				isAutoStartup = TRUE;
+				//AddToStartup();
+				std::cout << "IsAutoStartup:" << isAutoStartup;
+				//std::cout << "IsStartupEnabled:" << IsStartupEnabled;
+			}
 		}
 		break;
 	case ID_SWITCH_ICON_TRUE:
@@ -81,7 +114,7 @@ void ShowMenu()
 {
 	HMENU hMenu = CreatePopupMenu();
 	AppendMenu(hMenu, MF_STRING, ID_EXIT, TEXT("Bye!~"));
-
+	AppendMenu(hMenu, (isAutoStartup ? MF_CHECKED : MF_UNCHECKED) | MF_STRING, ID_STARTUP, TEXT("Start with Windows (reboot required)"));
 
 	POINT pt;
 	GetCursorPos(&pt);

@@ -1,4 +1,35 @@
-#include "Startup.h"
+#include "startup.h"
+#include <tchar.h>
+
+bool IsStartupEnabled()
+{
+    HKEY hKey;
+    LPCTSTR sk = TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Run");
+    bool isEnabled = false;
+
+    LONG result = RegOpenKeyEx(HKEY_CURRENT_USER, sk, 0, KEY_QUERY_VALUE, &hKey);
+    if (result == ERROR_SUCCESS)
+    {
+        TCHAR currentPath[MAX_PATH];
+        GetModuleFileName(NULL, currentPath, MAX_PATH);
+
+        TCHAR registryPath[MAX_PATH];
+        DWORD pathSize = MAX_PATH * sizeof(TCHAR);
+
+        // 尝试获取注册表中的值
+        result = RegQueryValueEx(hKey, TEXT("NB"), NULL, NULL, (LPBYTE)registryPath, &pathSize);
+        if (result == ERROR_SUCCESS)
+        {
+            // 比较当前程序路径和注册表中的路径
+            if (_tcscmp(currentPath, registryPath) == 0)
+            {
+                isEnabled = true;
+            }
+        }
+        RegCloseKey(hKey);
+    }
+    return isEnabled;
+}
 
 void AddToStartup()
 {
