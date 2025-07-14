@@ -3,17 +3,20 @@
 
 std::set<int> pressed_keys;
 std::unordered_map<int, int> keyMapping;
+std::unordered_map<int, int> keyMapping_n;
 
 extern bool g_capsLockWasOn = false;
 extern bool g_capsLockIsOn = false;
 extern bool g_spaceIsOn = false;
 extern bool g_bitch = false;
+extern bool g_freak = false;
 extern HWND g_hwnd = NULL;
 
 int pressed_pre_len = 0;
 
 void initKeyMapping()
 {
+    // 数字键的映射，参与Capslock组合键
     keyMapping['u'] = '7';
     keyMapping['i'] = '8';
     keyMapping['o'] = '9';
@@ -33,8 +36,10 @@ void initKeyMapping()
     keyMapping['L'] = '6';
     keyMapping['M'] = '1';
     keyMapping['H'] = '0';
-}
 
+    // 常规映射功能
+    keyMapping_n[VK_APPS] = VK_LCONTROL; // 右Menu键设置为CTRL键
+}
 
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
@@ -47,6 +52,25 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
     {
     case WM_KEYDOWN:
     {
+        // 输出当前键码，可在WinUser.h中查看所有键码
+        std::cout << p->vkCode << std::endl;
+
+        // 对常用映射表进行拦截映射处理
+        if (keyMapping_n.find(p->vkCode) != keyMapping_n.end())
+        {
+            g_freak = true;
+            PostMessage(g_hwnd, ID_SWITCH_ICON_TRUE, g_bitch, 0);
+            // std::cout << "Key pressed : " << keyMapping_n[p->vkCode] << std::endl;
+            INPUT input;
+            input.type = INPUT_KEYBOARD;
+            input.ki.wScan = MapVirtualKey(keyMapping_n[p->vkCode], MAPVK_VK_TO_VSC);
+            input.ki.time = 0;
+            input.ki.dwExtraInfo = 0;
+            input.ki.wVk = keyMapping_n[p->vkCode];
+            SendInput(1, &input, sizeof(INPUT));
+            return 1; // 拦截此事件
+        }
+
         // 当按下 CapsLock 和 ESC 键时退出程序
         if (g_capsLockIsOn && p->vkCode == VK_ESCAPE)
         {
@@ -63,10 +87,10 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
         {
             g_bitch = true;
             PostMessage(g_hwnd, ID_SWITCH_ICON_TRUE, g_bitch, 0);
-            /*std::cout << "g_spaceIsOn : " << g_spaceIsOn << std::endl;*/
+            // std::cout << "g_spaceIsOn : " << g_spaceIsOn << std::endl;
             // 如果不是空格键且空格键没有激活
             if (!g_spaceIsOn) {
-                /*std::cout << p->vkCode << " key pressed : " << keyMapping[p->vkCode] << std::endl;*/
+                // std::cout << p->vkCode << " key pressed : " << keyMapping[p->vkCode] << std::endl;
                 //如果是空格键
                 if (p->vkCode == VK_SPACE)
                 {
@@ -79,6 +103,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
                 input.ki.dwExtraInfo = 0;
                 input.ki.wVk = keyMapping[p->vkCode];
                 SendInput(1, &input, sizeof(INPUT));
+                input.ki.dwFlags = 0;
                 return 1; // 拦截此事件
             }
         }
@@ -94,9 +119,9 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
         if (p->vkCode == VK_CAPITAL)
         {
             g_capsLockIsOn = false;
-            /*std::cout << p->vkCode << " key released : " << keyMapping[p->vkCode] << " : " << g_bitch << std::endl;*/
+            std::cout << p->vkCode << " key released : " << keyMapping[p->vkCode] << " : " << g_bitch << std::endl;
             // 检查是否需要恢复CapsLock状态
-            std::cout << " Bitch : " << g_bitch << std::endl;
+            // std::cout << " Bitch : " << g_bitch << std::endl;
             if (g_bitch)
             {
                 keybd_event(VK_CAPITAL, MapVirtualKey(VK_CAPITAL, MAPVK_VK_TO_VSC), 0, 0);
@@ -105,6 +130,20 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
                 g_bitch = false; // 清除标记
                 PostMessage(g_hwnd, ID_SWITCH_ICON_FALSE, g_bitch, 0);
             }
+        }
+        if (p->vkCode == VK_APPS && g_freak)
+        {
+            INPUT input;
+            input.type = INPUT_KEYBOARD;
+            input.ki.wScan = MapVirtualKey(VK_LCONTROL, MAPVK_VK_TO_VSC);
+            input.ki.time = 0;
+            input.ki.dwExtraInfo = 0;
+            input.ki.wVk = VK_LCONTROL;
+            input.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP表示释放
+            SendInput(1, &input, sizeof(INPUT));
+            g_freak = false;    //清除标记
+            PostMessage(g_hwnd, ID_SWITCH_ICON_FALSE, g_bitch, 0);
+            return 1;
         }
         break;
     }
