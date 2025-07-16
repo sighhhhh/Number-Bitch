@@ -15,26 +15,50 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_2A7947D925BC4F639165540D3FC3BB3F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_35FC30F2CB704760AA9DACFB8F0242DA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_86D2B7370F5049B5AC017BCDEBB43944"
+        "MsmKey" = "8:_4551E4847A2241F89C2D97410526D4D4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_99296F33D705492E9D4F4FDBE11D606E"
+        "MsmKey" = "8:_4CFA35C3B77B4C4E8A373EC9F231B239"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B78945215DD74318B5E8B74C31645887"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_7DB3D92C818D645CDBC52573965C04E7"
+        "OwnerKey" = "8:_35FC30F2CB704760AA9DACFB8F0242DA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B1F73BA1E19FBD61DF4C2FED85920C1D"
+        "OwnerKey" = "8:_35FC30F2CB704760AA9DACFB8F0242DA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DAAA3E51A25E17BBA64EFD3C099D4448"
+        "OwnerKey" = "8:_35FC30F2CB704760AA9DACFB8F0242DA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DB1445C5A28E08D960F2509C38A2DE7C"
+        "OwnerKey" = "8:_35FC30F2CB704760AA9DACFB8F0242DA"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -124,10 +148,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86D2B7370F5049B5AC017BCDEBB43944"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2A7947D925BC4F639165540D3FC3BB3F"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Resource\\icon\\Capslock_off.ico"
-            "TargetName" = "8:Capslock_off.ico"
+            "SourcePath" = "8:..\\Number-Bitch\\icons\\CapsLock.ico"
+            "TargetName" = "8:CapsLock.ico"
             "Tag" = "8:"
             "Folder" = "8:_8883E20D449D46548A43C4D8BC416BD9"
             "Condition" = "8:"
@@ -144,9 +168,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_99296F33D705492E9D4F4FDBE11D606E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4551E4847A2241F89C2D97410526D4D4"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Resource\\icon\\Capslock_on.ico"
+            "SourcePath" = "8:..\\Number-Bitch\\icons\\Capslock_on.ico"
             "TargetName" = "8:Capslock_on.ico"
             "Tag" = "8:"
             "Folder" = "8:_8883E20D449D46548A43C4D8BC416BD9"
@@ -164,10 +188,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B78945215DD74318B5E8B74C31645887"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4CFA35C3B77B4C4E8A373EC9F231B239"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Resource\\icon\\CapsLock.ico"
-            "TargetName" = "8:CapsLock.ico"
+            "SourcePath" = "8:..\\Number-Bitch\\icons\\Capslock_off.ico"
+            "TargetName" = "8:Capslock_off.ico"
             "Tag" = "8:"
             "Folder" = "8:_8883E20D449D46548A43C4D8BC416BD9"
             "Condition" = "8:"
@@ -182,6 +206,86 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7DB3D92C818D645CDBC52573965C04E7"
+            {
+            "SourcePath" = "8:MSVCP140D.dll"
+            "TargetName" = "8:MSVCP140D.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_839A9D3C8FA748E0AFE0CCBC1CBB18C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B1F73BA1E19FBD61DF4C2FED85920C1D"
+            {
+            "SourcePath" = "8:VCRUNTIME140_1D.dll"
+            "TargetName" = "8:VCRUNTIME140_1D.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_839A9D3C8FA748E0AFE0CCBC1CBB18C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DAAA3E51A25E17BBA64EFD3C099D4448"
+            {
+            "SourcePath" = "8:ucrtbased.dll"
+            "TargetName" = "8:ucrtbased.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_839A9D3C8FA748E0AFE0CCBC1CBB18C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB1445C5A28E08D960F2509C38A2DE7C"
+            {
+            "SourcePath" = "8:VCRUNTIME140D.dll"
+            "TargetName" = "8:VCRUNTIME140D.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_839A9D3C8FA748E0AFE0CCBC1CBB18C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -372,7 +476,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9963BED314AE437A981BFCBC357F4DD8"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DD1CE9F2545D40D6B5866DF5C55CA4D4"
             {
             "Name" = "8:NB"
             "Arguments" = "8:"
@@ -383,7 +487,7 @@
             "Target" = "8:_35FC30F2CB704760AA9DACFB8F0242DA"
             "Folder" = "8:_D96BE4991FAB4DCBA5F49FB7141304CA"
             "WorkingFolder" = "8:_839A9D3C8FA748E0AFE0CCBC1CBB18C1"
-            "Icon" = "8:_B78945215DD74318B5E8B74C31645887"
+            "Icon" = "8:_2A7947D925BC4F639165540D3FC3BB3F"
             "Feature" = "8:"
             }
         }

@@ -5,7 +5,7 @@ std::set<int> pressed_keys;
 std::unordered_map<int, int> keyMapping;
 std::unordered_map<int, int> keyMapping_n;
 
-extern bool g_capsLockWasOn = false;
+// extern bool g_capsLockWasOn = false;
 extern bool g_capsLockIsOn = false;
 extern bool g_spaceIsOn = false;
 extern bool g_bitch = false;
@@ -53,7 +53,8 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
     case WM_KEYDOWN:
     {
         // 输出当前键码，可在WinUser.h中查看所有键码
-        std::cout << p->vkCode << std::endl;
+        // std::cout << p->vkCode << std::endl;
+        //std::cout << "DOWN——vkCode : " << p->vkCode << " key released : " << keyMapping[p->vkCode] << " g_bitch : " << g_bitch << std::endl;
 
         // 对常用映射表进行拦截映射处理
         if (keyMapping_n.find(p->vkCode) != keyMapping_n.end())
@@ -77,10 +78,11 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
             PostThreadMessage(GetCurrentThreadId(), WM_QUIT, 0, 0);
             return 1; // 拦截这个事件
         }
+        // 先按下CapsLock键触发组合
         if (p->vkCode == VK_CAPITAL)
         {
+            // g_capsLockWasOn = (GetKeyState(VK_CAPITAL) & 0x0001) ? true : false;
             g_capsLockIsOn = true;
-            g_capsLockWasOn = (GetKeyState(VK_CAPITAL) & 0x0001) ? true : false;
         }
         // CapsLock 已触发同时存在满足匹配的映射关系
         if (g_capsLockIsOn && keyMapping.find(p->vkCode) != keyMapping.end())
@@ -111,6 +113,8 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
     }
     case WM_KEYUP:
     {
+        //std::cout << "UP——vkCode : " << p->vkCode << " key released : " << keyMapping[p->vkCode] << " g_bitch : " << g_bitch << std::endl;
+
         if (p->vkCode == VK_SPACE)
         {
             g_spaceIsOn = false;
@@ -119,9 +123,8 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
         if (p->vkCode == VK_CAPITAL)
         {
             g_capsLockIsOn = false;
-            std::cout << p->vkCode << " key released : " << keyMapping[p->vkCode] << " : " << g_bitch << std::endl;
             // 检查是否需要恢复CapsLock状态
-            // std::cout << " Bitch : " << g_bitch << std::endl;
+            // std::cout << "Bitch : " << g_bitch << std::endl;
             if (g_bitch)
             {
                 keybd_event(VK_CAPITAL, MapVirtualKey(VK_CAPITAL, MAPVK_VK_TO_VSC), 0, 0);
@@ -129,6 +132,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
                 keybd_event(VK_CAPITAL, MapVirtualKey(VK_CAPITAL, MAPVK_VK_TO_VSC), KEYEVENTF_KEYUP, 0);
                 g_bitch = false; // 清除标记
                 PostMessage(g_hwnd, ID_SWITCH_ICON_FALSE, g_bitch, 0);
+                // return 1;
             }
         }
         if (p->vkCode == VK_APPS && g_freak)
@@ -153,4 +157,3 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 
     return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
-

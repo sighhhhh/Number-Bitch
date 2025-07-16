@@ -10,6 +10,14 @@ int WINAPI WinMain(
     _In_ int       nCmdShow
 )
 {
+    //// 分配控制台窗口并绑定标准输出
+    //AllocConsole();
+    //FILE* f;
+    //freopen_s(&f, "CONOUT$", "w", stdout);
+    //freopen_s(&f, "CONOUT$", "w", stderr);
+
+    //std::cout << "程序启动，开始监听按键..." << std::endl;
+
     // 是否开机自启
     if (IsFirstRun())
     {
